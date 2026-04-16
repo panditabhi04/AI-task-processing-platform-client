@@ -1,23 +1,37 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import LoginView from "@/app/(page)/feature/auth/components/login-component"
-import { loginSchema } from '../validation/loginSchema';
+import { loginSchema } from '../validation/login-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearState, loginUser } from '../state/auth-slice';
+
 
 export default function LoginContainer() {
     const router = useRouter()
+    const dispatch = useDispatch()
+
+    const { loading, error, success } = useSelector((state) => state.auth)
+
     const form = useForm({
         resolver: zodResolver(loginSchema),
         mode: "onChange",
     });
-    // console.log("useForm : ", form.handleSubmit);
 
     const onSubmit = (data) => {
-        console.log("LOGIN DATA:", data);
-        router.push("/")
+        dispatch(loginUser(data))
     };
+
+    // handle success redirect
+    useEffect(() => {
+        if (success) {
+            router.push("/")
+            dispatch(clearState())
+        }
+    }, [success])
+
     return (
         <div>
             <LoginView
@@ -25,6 +39,8 @@ export default function LoginContainer() {
                 handleSubmit={form.handleSubmit}
                 errors={form.formState.errors}
                 onSubmit={onSubmit}
+                loading={loading}
+                error={error}
             />
         </div>
     )
