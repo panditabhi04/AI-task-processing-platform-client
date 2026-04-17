@@ -6,7 +6,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import SignupImg from "../../../../../../public/auth/login.jpg";
+import SignupImg from "../../../../public/auth/login.jpg"
 import Link from "next/link";
 
 export default function SignupComponent({

@@ -1,6 +1,6 @@
-import SingupContainer from '@/app/(page)/feature/auth/container/singup-container'
-import React from 'react'
 
+import React from 'react'
+import SingupContainer from "@/feature/auth/container/singup-container"
 function SingupPage() {
   return (
     <div>

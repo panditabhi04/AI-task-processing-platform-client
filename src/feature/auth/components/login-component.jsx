@@ -5,7 +5,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
-import LoginImg from "../../../../../../public/auth/login.jpg"
+import LoginImg from "../../../../public/auth/login.jpg"
 import Link from 'next/link';
 
 export default function LoginComponent({
@@ -76,12 +76,6 @@ export default function LoginComponent({
                                     {errors.password.message}
                                 </p>
                             )}
-                        </div>
-
-                        <div className="flex justify-end text-sm">
-                            <a href="#" className="text-blue-600 hover:underline">
-                                Forgot Your Password?
-                            </a>
                         </div>
 
                         <Button className="w-full" type="submit" disabled={loading}>

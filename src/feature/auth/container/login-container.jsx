@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
-import LoginView from "@/app/(page)/feature/auth/components/login-component"
+import LoginComponent from '../components/login-component';
 import { loginSchema } from '../validation/login-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -34,7 +34,7 @@ export default function LoginContainer() {
 
     return (
         <div>
-            <LoginView
+            <LoginComponent
                 register={form.register}
                 handleSubmit={form.handleSubmit}
                 errors={form.formState.errors}
